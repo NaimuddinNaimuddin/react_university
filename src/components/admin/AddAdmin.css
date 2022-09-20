@@ -1,0 +1,32 @@
+.card-admin {
+    box-shadow: 0px 10px 30px 0px rgb(50 50 50 / 16%);
+    margin: 5%;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.input-admin {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #BEBEBE;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+}
+
+.select-admin {
+    width: 30%;
+    padding: 14px 20px;
+    margin: 5px 0px;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px;
+    margin-right: 13px;
+    background-color: #eee;
+}
+
+.add-btn{
+    padding: 10px;
+    background-color: blue;
+    color: #eee;
+    border: none;
+    border-radius: 7px;
+}
