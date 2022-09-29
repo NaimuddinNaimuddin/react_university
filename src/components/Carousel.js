@@ -46,7 +46,7 @@ function Carousel() {
                                 }
                                     : {
                                         margin: '10px',
-                                        background: '#eee',
+                                        background: '#e5e5e5',
                                         width: '10px',
                                         height: '10px',
                                         borderRadius: '50%',

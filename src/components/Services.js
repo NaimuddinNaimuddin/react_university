@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import './Services.css'
 
 
-function Services() {
-
+function Services(props) {
+    console.log(props, 7)
     const [data, setData] = useState([])
     const [filter, setFilter] = useState('')
 
@@ -20,9 +20,12 @@ function Services() {
     }, [])
 
     return (<>
-        <input
+        {!props.hideSearchBar && (<input
             placeholder="Search"
-            className="filter" value={filter} onChange={(e) => setFilter(e.target.value)} />
+            className="filter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)} />)}
+
         <div className="flex">
 
             {

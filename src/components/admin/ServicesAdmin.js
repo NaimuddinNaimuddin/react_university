@@ -25,12 +25,21 @@ function ServicesAdmin() {
 
     const handleClick = () => {
         console.log(title, desc, 19)
-        axios.post('http://localhost:5000/api/services', {
-            title: title,
-            description: desc,
-        })
+        axios.post('http://localhost:5000/api/services',
+            {
+                title: title,
+                description: desc,
+            },
+            {
+                headers: { 'Authorization': localStorage.getItem('token') }
+            }
+        )
             .then((res) => {
                 console.log(res.data)
+
+                if (res.data.code === 403 && res.data.message === 'Token Expired') {
+                    localStorage.setItem('token', null)
+                }
             })
             .catch(err => {
                 console.log(err, "err")

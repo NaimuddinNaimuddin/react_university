@@ -28,6 +28,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/services' element={<Services />} />
+          <Route path='/posts' element={<Services />} />
           <Route path='/admin/services' element={<ServicesAdmin />} />
           <Route path='/admin/list' element={<ListAdmins />} />
           <Route path='/admin/add' element={<AddAdmin />} />
