@@ -14,31 +14,35 @@ import AddAdmin from './components/admin/AddAdmins';
 import LoginAdmin from './components/admin/LoginAdmin';
 import AdminDash from './components/admin/AdminDash';
 
+import { Provider } from "react-redux"
+import store from './store'
+
 function App() {
 
   return (
     <>
+      <Provider store={store} >
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/courses' element={<Courses />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/posts' element={<Services />} />
+            <Route path='/admin/services' element={<ServicesAdmin />} />
+            <Route path='/admin/list' element={<ListAdmins />} />
+            <Route path='/admin/add' element={<AddAdmin />} />
+            <Route path='/admin/login' element={<LoginAdmin />} />
+            <Route path='/admin/dashboard' element={<AdminDash />} />
+          </Routes>
 
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/posts' element={<Services />} />
-          <Route path='/admin/services' element={<ServicesAdmin />} />
-          <Route path='/admin/list' element={<ListAdmins />} />
-          <Route path='/admin/add' element={<AddAdmin />} />
-          <Route path='/admin/login' element={<LoginAdmin />} />
-          <Route path='/admin/dashboard' element={<AdminDash />} />
-        </Routes>
+          <Footer />
 
-        <Footer />
-
-      </BrowserRouter>
+        </BrowserRouter>
+      </Provider>
     </>
   );
 }

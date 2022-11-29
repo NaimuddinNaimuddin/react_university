@@ -3,21 +3,15 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import './Courses.css'
-
+import { getCourses } from "../reducers/courseReducer"
+import { useDispatch, useSelector } from "react-redux"
 
 function Courses() {
-
-    const [data, setData] = useState([])
+    const dispatch = useDispatch()
+    const courseState = useSelector(state => state.courseReducer)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/services')
-            .then(res => {
-                console.log(res.data)
-                setData(res.data.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        dispatch(getCourses())
     }, [])
 
     return (
@@ -25,8 +19,9 @@ function Courses() {
 
 
             {
-                data.length > 0 ?
-                    data.map((serviceItem, serviceIndex) => {
+                courseState.courseData &&
+                    courseState.courseData.length > 0 ?
+                    courseState.courseData.map((serviceItem, serviceIndex) => {
                         return (
                             <div key={serviceIndex} className="cou-card">
                                 <div className="c-title"> {serviceItem?.title}</div>

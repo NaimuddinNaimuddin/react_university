@@ -8,7 +8,7 @@ function ServicesAdmin() {
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
-
+    const [image, setImage] = useState('')
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
@@ -24,12 +24,16 @@ function ServicesAdmin() {
     }
 
     const handleClick = () => {
-        console.log(title, desc, 19)
+        console.log(title, desc, image, 19)
+
+
+        const formData = new FormData()
+        formData.append('title', title)
+        formData.append('description', desc)
+        formData.append('image', image)
+        
         axios.post('http://localhost:5000/api/services',
-            {
-                title: title,
-                description: desc,
-            },
+            formData,
             {
                 headers: { 'Authorization': localStorage.getItem('token') }
             }
@@ -50,6 +54,7 @@ function ServicesAdmin() {
         <div className="admin-card">
             <input value={title} onChange={handleChange} placeholder='title' className='input-admin' /> <br />
             <input value={desc} onChange={handleChangeDesc} placeholder='description' className='input-admin' /> <br />
+            <input multiple onChange={(e) => setImage(e.target.files[0])} type="file" />
             <button
                 onClick={handleClick}
                 className='add-btn'>
